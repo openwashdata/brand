@@ -38,15 +38,38 @@ keep the final word.
 
 pkgdown or Shiny via bslib: `bslib::bs_theme(brand = "_brand.yml")`.
 
+Quarto documents (PDF through Typst, and Word): the openwashdata
+extension [quarto-owd](https://github.com/openwashdata/quarto-owd)
+provides the formats `owd-typst` and `owd-docx`. Bring the brand in with
+`quarto use brand openwashdata/brand` and the extension with
+`quarto add openwashdata/quarto-owd`.
+
 R charts outside brand-aware tools: read the file with
 `yaml::read_yaml()` and take colors from `color$palette`.
 
 ## Updating
 
 Change values in this repository first, then refresh the copies in
-consuming repositories. The file is small enough to copy by hand; a
-`washr::use_brand()` helper is planned to automate the copy for the
-data package sites.
+consuming repositories:
+
+- R data packages: `washr::use_brand()` (washr 1.1.0 and later) copies
+  `_brand.yml` and the referenced logos into the package and wires the
+  pkgdown site. Run it again to refresh.
+- Quarto projects: `quarto use brand openwashdata/brand` (Quarto 1.9 and
+  later) mirrors the brand into `_brand/`. Run it again to refresh.
+- quarto-owd regenerates its Word reference document from the refreshed
+  brand; see its README.
+
+## License
+
+The brand definition (`_brand.yml`: colors, typography, and the logo
+references) is licensed under [CC BY 4.0](LICENSE). Copy and adapt it
+with attribution to openwashdata.
+
+The logos identify openwashdata. CC BY 4.0 does not license trademark
+rights (section 2(b)(2)), so the logo files are here so that openwashdata
+material renders with the correct marks. Any other use of the logos
+needs permission from openwashdata.
 
 ## Reference implementation
 
