@@ -1,0 +1,1 @@
+Sitemap: https://openwashdata.github.io/brand/sitemap.xml

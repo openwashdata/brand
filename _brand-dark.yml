@@ -1,3 +1,11 @@
+# The openwashdata brand for dark backgrounds. Same palette and logos as
+# _brand.yml; only the colour roles and typography colours differ. Quarto
+# websites toggle between the two with
+#   brand:
+#     light: _brand.yml
+#     dark: _brand-dark.yml
+# The brand.yml R package (bslib, pkgdown) reads single-mode files only,
+# so the two brands stay in two files.
 meta:
   name: openwashdata
   link:
@@ -41,15 +49,15 @@ color:
     red: owd-red
     yellow: sand
     pink: rose
-  foreground: ink
-  background: paper
-  primary: owd-purple
-  secondary: owd-grey
-  tertiary: owd-purple-bg
-  success: owd-green
-  info: owd-blue
-  warning: owd-orange
-  danger: owd-red
+  foreground: paper
+  background: owd-purple-dark
+  primary: owd-purple-light
+  secondary: owd-grey-light
+  tertiary: owd-purple-dim
+  success: mint
+  info: owd-blue-light
+  warning: peach
+  danger: rose
   light: paper
   dark: owd-purple-dark
 
@@ -72,11 +80,11 @@ typography:
   monospace:
     family: Source Code Pro
   monospace-inline:
-    background-color: owd-purple-bg
+    background-color: owd-purple-dim
   monospace-block:
-    background-color: owd-purple-bg
+    background-color: owd-purple-dim
   link:
-    color: owd-blue
+    color: owd-blue-light
     decoration: underline
 
 logo:
@@ -102,6 +110,6 @@ logo:
     badge:
       path: logos/OWD-logo-40.png
       alt: openwashdata badge, white wordmark on a purple hexagon
-  small: icon
-  medium: full-png
-  large: full-svg
+  small: icon-dark
+  medium: full-png-dark
+  large: full-svg-dark
