@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+
+brand:
+  light: _brand.yml
+  dark: _brand-dark.yml
+
+website:
+  title: "openwashdata brand"
+  site-url: https://openwashdata.github.io/brand/
+  repo-url: https://github.com/openwashdata/brand
+  navbar:
+    logo: logos/OWD-logo-16.png
+    logo-alt: openwashdata
+    right:
+      - href: https://github.com/openwashdata/brand
+        icon: github
+        aria-label: GitHub repository
+
+format:
+  html:
+    theme:
+      light: brand
+      dark: brand
+    toc: true
+    toc-depth: 2
+
+execute:
+  echo: false
+  warning: false
+  message: false

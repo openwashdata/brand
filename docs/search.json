@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "openwashdata brand",
+    "section": "",
+    "text": "This page renders with the brand files in this repository and nothing else: no custom SCSS, no manual colours. Everything on it, the swatches, the contrast table, the themed chart and table, is computed from _brand.yml at render time, so it cannot drift from the definition. Use the toggle in the navigation bar to see the dark brand."
+  },
+  {
+    "objectID": "index.html#typography",
+    "href": "index.html#typography",
+    "title": "openwashdata brand",
+    "section": "Typography",
+    "text": "Typography\nBody text runs in Atkinson Hyperlegible Next, a typeface designed for legibility at small sizes and for readers with low vision. Headings use its bold weight in the primary colour. Here is a link in the brand blue, some bold text, some italic text, and inline code like read_csv(\"data.csv\") in Source Code Pro on the light purple tint.\n# Code blocks use Source Code Pro on the same tint.\nlibrary(washr)\nsetup_dictionary()\n\nA third-level heading\n\nA block quote, for measuring how quoted material sits against the background."
+  },
+  {
+    "objectID": "index.html#the-palette",
+    "href": "index.html#the-palette",
+    "title": "openwashdata brand",
+    "section": "The palette",
+    "text": "The palette\n\n\n\n\n\n\n\n\n\n\nRoles\nEach role has a light and a dark value. Tools read the roles, not the palette names, so a role change reaches every consumer at once.\n\n\n\n\n\n\n\n\n\nRole\nLight\nDark\nUsed for\n\n\n\n\nforeground\nink\npaper\ntext\n\n\nbackground\npaper\nowd-purple-dark\npage\n\n\nprimary\nowd-purple\nowd-purple-light\nnavbar, headings, buttons\n\n\nsecondary\nowd-grey\nowd-grey-light\nmuted text, disabled states\n\n\ntertiary\nowd-purple-bg\nowd-purple-dim\nwells, hover states, code background\n\n\nsuccess\nowd-green\nmint\ntip callouts, positive states\n\n\ninfo\nowd-blue\nowd-blue-light\nlinks, note callouts, info states\n\n\nwarning\nowd-orange\npeach\nwarning and caution callouts\n\n\ndanger\nowd-red\nrose\nimportant callouts, errors\n\n\n\n\n\nPairings and contrast\nText needs a contrast of 4.5:1 against its background (WCAG AA), large text and interface elements 3:1. The table is computed from the file. The four highlight colours (mint, peach, sand, rose) are backgrounds only and take ink text; they are not for text.\n\n\n\n\n\n\n\n\nText\nBackground\nContrast\nWCAG\n\n\n\n\nink\npaper\n15.16\nAAA\n\n\nowd-purple\npaper\n11.01\nAAA\n\n\nowd-blue\npaper\n8.12\nAAA\n\n\nowd-orange\npaper\n5.26\nAA\n\n\nowd-green\npaper\n4.76\nAA\n\n\nowd-red\npaper\n6.60\nAA\n\n\nowd-grey\npaper\n6.08\nAA\n\n\nwhite\nowd-purple\n12.10\nAAA\n\n\nwhite\nowd-blue\n8.93\nAAA\n\n\nwhite\nowd-orange\n5.79\nAA\n\n\nwhite\nowd-green\n5.24\nAA\n\n\nwhite\nowd-red\n7.26\nAAA\n\n\nwhite\nowd-grey\n6.69\nAA\n\n\nink\nowd-purple-bg\n14.63\nAAA\n\n\nink\nmint\n6.43\nAA\n\n\nink\npeach\n10.19\nAAA\n\n\nink\nsand\n13.27\nAAA\n\n\nink\nrose\n10.84\nAAA\n\n\npaper\nowd-purple-dark\n15.75\nAAA\n\n\nowd-purple-light\nowd-purple-dark\n7.86\nAAA\n\n\nowd-blue-light\nowd-purple-dark\n8.75\nAAA\n\n\nmint\nowd-purple-dark\n6.68\nAA\n\n\npeach\nowd-purple-dark\n10.59\nAAA\n\n\nrose\nowd-purple-dark\n11.26\nAAA\n\n\nowd-grey-light\nowd-purple-dark\n8.45\nAAA"
+  },
+  {
+    "objectID": "index.html#semantic-roles-in-callouts",
+    "href": "index.html#semantic-roles-in-callouts",
+    "title": "openwashdata brand",
+    "section": "Semantic roles in callouts",
+    "text": "Semantic roles in callouts\n\n\n\n\n\n\nNote\n\n\n\nA note, tinted from info on the web and from primary in Typst.\n\n\n\n\n\n\n\n\nTip\n\n\n\nA tip, tinted from success (owd-green).\n\n\n\n\n\n\n\n\nWarning\n\n\n\nA warning, tinted from warning (owd-orange).\n\n\n\n\n\n\n\n\nCaution\n\n\n\nA caution, also from warning.\n\n\n\n\n\n\n\n\nImportant\n\n\n\nAn important callout, tinted from danger (owd-red)."
+  },
+  {
+    "objectID": "index.html#logos",
+    "href": "index.html#logos",
+    "title": "openwashdata brand",
+    "section": "Logos",
+    "text": "Logos\nThe wordmark and the stacked mark exist for light and for dark backgrounds. _brand.yml designates three sizes with a light and a dark variant each; Quarto and bslib pick the right one for the mode.\n\n\n\n\n\n\nmedium, light: OWD-logo-01\n\n\n\n\n\n\n\nsmall, light: OWD-logo-18\n\n\n\n\n\n\n\n\n\n\n\n\nmedium, dark: OWD-logo-05\n\n\n\n\n\n\n\nsmall, dark: OWD-logo-16\n\n\n\n\n\n\n\nRules\n\nWhich variant. Wordmark (01 to 12) beside text and in headers; stacked mark (13 to 34) where the space is square; badge (35 to 41) for avatars and favicons. Black or white artwork on coloured backgrounds; the coloured artwork (purple, light purple, orange) on white or paper only.\nDark backgrounds. Use the white variants (04 to 06, 13 to 17) or a badge. Never place the black wordmark on owd-purple.\nClear space. Keep at least the height of the lowercase letters free around the mark. Minimum width 120 px or 30 mm for the wordmark, 24 px for the stacked mark.\nNo changes. Do not recolour, stretch, outline or add effects. The dot is part of the mark.\nNavbar note. A Quarto or pkgdown navbar in the primary colour needs the white stacked mark; set it explicitly (navbar: logo: logos/OWD-logo-16.png) until the tools pick a logo by background.\nPermission. The logos identify openwashdata. They are here so that openwashdata material renders with the right marks; any other use needs permission (see the LICENSE section of the README).\n\nThe full library sits in logos/: 41 variants as SVG and PNG, a large export of variant 20, and the QR code logos in logos/communications/."
+  },
+  {
+    "objectID": "index.html#dark-mode",
+    "href": "index.html#dark-mode",
+    "title": "openwashdata brand",
+    "section": "Dark mode",
+    "text": "Dark mode\nThe dark brand lives in _brand-dark.yml: the same palette and logos, dark values for the roles. A Quarto website toggles between the two:\nbrand:\n  light: _brand.yml\n  dark: _brand-dark.yml\nformat:\n  html:\n    theme:\n      light: brand\n      dark: brand\nTypst PDFs and revealjs slides render one mode; set brand-mode: dark for the dark one. The brand.yml R package that bslib and pkgdown use reads one mode per file, which is why the two brands stay in two files."
+  },
+  {
+    "objectID": "index.html#charts-and-tables",
+    "href": "index.html#charts-and-tables",
+    "title": "openwashdata brand",
+    "section": "Charts and tables",
+    "text": "Charts and tables\nThe brand.yml R package themes ggplot2, gt, flextable, plotly and thematic from the file, so a chart in a data package README or a course slide carries the brand without manual colours.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNeighbourhood\nMedian monthly cost (GHS)\n\n\n\n\nMadina\n48.5\n\n\nNima\n61.0\n\n\nTeshie\n39.2\n\n\n\n\n\n\n\nThe two calls are brand.yml::theme_brand_ggplot2() and brand.yml::theme_brand_gt(). In R the palette names carry underscores (brand$color$palette$owd_purple). For categorical series use the palette in this order: owd-purple, owd-orange, owd-green, owd-blue, owd-purple-light, owd-grey. For a sequential ramp interpolate from owd-purple-bg to owd-purple-dark."
+  },
+  {
+    "objectID": "index.html#assets",
+    "href": "index.html#assets",
+    "title": "openwashdata brand",
+    "section": "Assets",
+    "text": "Assets\nReady to upload: a square avatar for GitHub, Buttondown and LinkedIn, and a social preview image for repositories and the website. Both are generated from the logo files with Typst (assets/*.typ).\n\n\n\n\n\n\nAvatar, 1024 by 1024\n\n\n\n\n\n\n\nSocial preview, 1280 by 640"
+  },
+  {
+    "objectID": "index.html#how-to-use-the-brand",
+    "href": "index.html#how-to-use-the-brand",
+    "title": "openwashdata brand",
+    "section": "How to use the brand",
+    "text": "How to use the brand\n\nQuarto website, document or slide deck: quarto use brand openwashdata/brand (Quarto 1.9 and later), or copy _brand.yml and logos/ into the project root.\nBranded PDF and Word documents: the quarto-owd extension, formats owd-typst and owd-docx.\nR data packages: washr::use_brand() copies the brand and wires the pkgdown site.\nShiny and other bslib apps: bslib::bs_theme(brand = \"_brand.yml\").\nCharts and tables: the theme_brand_*() functions above.\nEverything else: read the YAML and take colours from color$palette.\n\nValues change in this repository first. Consumers refresh with the same commands; releases are tagged, so a consumer can pin a version (washr::use_brand(ref = \"v1.0.0\"))."
+  },
+  {
+    "objectID": "NEWS.html",
+    "href": "NEWS.html",
+    "title": "openwashdata brand 1.0.0",
+    "section": "",
+    "text": "First tagged release. The guide at https://openwashdata.github.io/brand/ shows everything below rendered from the files.\n\n\n\nowd-orange darkened from #c14a09 to #b04208 so it passes WCAG AA as text on paper (5.3:1) and carries white text.\nNew accents with the same property: owd-green #257a5a (success), owd-red #a4262c (danger), owd-grey #5c5c5c and owd-grey-light #b5b5b5 (secondary), owd-blue-light #9fb6ff (links on dark backgrounds), owd-purple-dim #3f1a3f (wells on dark backgrounds).\nmint, peach, sand and rose are highlight backgrounds only, with ink text; they are no longer semantic roles. success moves from mint to owd-green, warning from sand to owd-orange.\nAll eleven roles set: foreground, background, primary, secondary, tertiary, success, info, warning, danger, light, dark.\nBootstrap aliases gain red; green now points at owd-green.\n\n\n\n\n\nAtkinson Hyperlegible Next replaces Atkinson Hyperlegible (weights 400, 600, 700 with italics; 150 languages; a variable font). Source Code Pro stays for code.\nHeadings in the primary colour; code (inline and block) on the owd-purple-bg tint; links underlined.\n\n\n\n\n\n_brand-dark.yml: the dark brand with the same palette and logos and dark values for every role. Quarto websites toggle between the two files. The brand.yml R package reads one mode per file, hence two files.\n\n\n\n\n\nAlt text on every designated image.\nWhite variants designated for dark backgrounds: OWD-logo-05 (wordmark) and OWD-logo-16 (stacked), plus the badge OWD-logo-40.\nAssets generated with Typst: assets/avatar.png (1024 by 1024) and assets/social-preview.png (1280 by 640).\n\n\n\n\n\nexample.qmd is now index.qmd, a Quarto website published from docs/: swatches, roles, a computed contrast table, callouts, logo rules, dark mode, themed ggplot2 and gt examples, the assets, and how every consumer reads the brand."
+  },
+  {
+    "objectID": "NEWS.html#palette",
+    "href": "NEWS.html#palette",
+    "title": "openwashdata brand 1.0.0",
+    "section": "",
+    "text": "owd-orange darkened from #c14a09 to #b04208 so it passes WCAG AA as text on paper (5.3:1) and carries white text.\nNew accents with the same property: owd-green #257a5a (success), owd-red #a4262c (danger), owd-grey #5c5c5c and owd-grey-light #b5b5b5 (secondary), owd-blue-light #9fb6ff (links on dark backgrounds), owd-purple-dim #3f1a3f (wells on dark backgrounds).\nmint, peach, sand and rose are highlight backgrounds only, with ink text; they are no longer semantic roles. success moves from mint to owd-green, warning from sand to owd-orange.\nAll eleven roles set: foreground, background, primary, secondary, tertiary, success, info, warning, danger, light, dark.\nBootstrap aliases gain red; green now points at owd-green."
+  },
+  {
+    "objectID": "NEWS.html#typography",
+    "href": "NEWS.html#typography",
+    "title": "openwashdata brand 1.0.0",
+    "section": "",
+    "text": "Atkinson Hyperlegible Next replaces Atkinson Hyperlegible (weights 400, 600, 700 with italics; 150 languages; a variable font). Source Code Pro stays for code.\nHeadings in the primary colour; code (inline and block) on the owd-purple-bg tint; links underlined."
+  },
+  {
+    "objectID": "NEWS.html#dark-mode",
+    "href": "NEWS.html#dark-mode",
+    "title": "openwashdata brand 1.0.0",
+    "section": "",
+    "text": "_brand-dark.yml: the dark brand with the same palette and logos and dark values for every role. Quarto websites toggle between the two files. The brand.yml R package reads one mode per file, hence two files."
+  },
+  {
+    "objectID": "NEWS.html#logos",
+    "href": "NEWS.html#logos",
+    "title": "openwashdata brand 1.0.0",
+    "section": "",
+    "text": "Alt text on every designated image.\nWhite variants designated for dark backgrounds: OWD-logo-05 (wordmark) and OWD-logo-16 (stacked), plus the badge OWD-logo-40.\nAssets generated with Typst: assets/avatar.png (1024 by 1024) and assets/social-preview.png (1280 by 640)."
+  },
+  {
+    "objectID": "NEWS.html#guide",
+    "href": "NEWS.html#guide",
+    "title": "openwashdata brand 1.0.0",
+    "section": "",
+    "text": "example.qmd is now index.qmd, a Quarto website published from docs/: swatches, roles, a computed contrast table, callouts, logo rules, dark mode, themed ggplot2 and gt examples, the assets, and how every consumer reads the brand."
+  }
+]
