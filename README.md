@@ -105,6 +105,8 @@ needs permission from openwashdata.
 
 ## Reference implementation
 
-openwashdata/website carries the earlier values in `style/theme.scss`
-and `styles.css`; the brand files here are the source of truth since
-1.0.0, and the website is due to read them.
+openwashdata/website reads these files: `_brand/` mirrors them, the
+theme lists layer `brand` between the Bootswatch theme and the site's
+own SCSS, and that SCSS uses the `$brand-<name>` variables instead of
+hex values (openwashdata/website#140). Copy that setup for a new
+Quarto website.
