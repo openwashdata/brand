@@ -246,6 +246,21 @@ generated from the logo files with Typst (`assets/*.typ`).
 ![Social preview, 1280 by 640](assets/social-preview.png){width="400"}
 :::
 
+Where each file is in use, so a regeneration knows what to upload
+again. The upload forms have no API; each is done by hand.
+
+| File | In use | Where to upload |
+|---|---|---|
+| `assets/avatar.png` | GitHub organisation profile picture | Organisation settings, Profile |
+| `assets/avatar.png` | Buttondown newsletter icon | Buttondown, Settings, General, Icon |
+| `assets/social-preview.png` | Social preview of the repositories brand, washr, quarto-owd, website and newsletter | Each repository, Settings, General, Social preview |
+| `assets/social-preview.png` | Buttondown share image | Buttondown, Settings, General, Share image |
+| `logos/OWD-logo-40.png` | Header of the newsletter emails, linked from the v1.0.0 tag | Buttondown, Settings, Email, Header |
+
+A LinkedIn page for openwashdata does not exist yet. Its cover slot is
+about six to one, so the social preview does not fit it; a cover would
+be a separate Typst asset.
+
 ## How to use the brand
 
 - **Quarto** website, document or slide deck: `quarto use brand openwashdata/brand` (Quarto 1.9 and later), or copy `_brand.yml` and `logos/` into the project root.
