@@ -1,3 +1,22 @@
+# openwashdata brand (development version)
+
+## Charts
+
+- Six chart colours, chart-1 to chart-6, in both brand files: lightened
+  owd-purple, owd-orange, lightened owd-blue, owd-green with more chroma,
+  a gold and a rose. Derived from the brand hues and checked for
+  lightness, chroma, colour-vision separation and contrast on the light
+  tint and the dark well. Series take them in that order and never
+  cycle; a seventh series folds into Other (#17).
+- The guide's "Charts and tables" section shows the six on both
+  surfaces with a contrast table, the sequential purple ramp, and a
+  diverging ramp from owd-orange through owd-grey-light to chart-3 with
+  even lightness on both sides. The example chart uses chart-1 to
+  chart-3.
+- The earlier advice to use owd-purple, owd-orange, owd-green, owd-blue,
+  owd-purple-light and owd-grey as series colours is withdrawn: three of
+  them fail as fills.
+
 # openwashdata brand 1.0.0
 
 First tagged release. The guide at <https://openwashdata.github.io/brand/>
