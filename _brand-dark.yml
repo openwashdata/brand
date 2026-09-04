@@ -41,6 +41,16 @@ color:
     peach: "#FEBC94"
     sand: "#FAE3B4"
     rose: "#FFC0CB"
+    # Chart series, in this order, never cycled: a seventh series folds
+    # into Other. Derived from the brand hues and checked for lightness,
+    # chroma, colour-vision separation and contrast on the light tint and
+    # the dark well (issue #17).
+    chart-1: "#8a3a8a"
+    chart-2: "#b04208"
+    chart-3: "#3b5bdb"
+    chart-4: "#1f8a5f"
+    chart-5: "#b8860b"
+    chart-6: "#c2477a"
     # Bootstrap-name aliases so brand-aware tools pick these up.
     purple: owd-purple
     blue: owd-blue

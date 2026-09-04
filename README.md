@@ -38,9 +38,12 @@ shared assets.
 | owd-grey, owd-grey-light | `#5c5c5c`, `#b5b5b5` | secondary: muted text |
 | ink, paper | `#1e1e1e`, `#f4f4f4` | text and surface |
 | mint, peach, sand, rose | see file | highlight backgrounds only, with ink text |
+| chart-1 to chart-6 | see file | categorical series in charts, in that order, never cycled |
 
 Every accent reaches 4.5:1 as text on paper and carries white text; the
-guide computes the table. Typography is Atkinson Hyperlegible Next
+guide computes the table. The six chart colours are checked for
+lightness, chroma, colour-vision separation and contrast on the light
+tint and the dark well; the guide shows them with their ramps. Typography is Atkinson Hyperlegible Next
 (Google Fonts) with Source Code Pro for code.
 
 ## How to use it
