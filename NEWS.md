@@ -1,4 +1,7 @@
-# openwashdata brand (development version)
+# openwashdata brand 1.1.0
+
+The chart palette release. The guide at <https://openwashdata.github.io/brand/>
+shows the chart section rendered from the files.
 
 ## Charts
 

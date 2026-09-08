@@ -74,7 +74,7 @@ Change values in this repository first, then refresh the copies in
 consuming repositories:
 
 - R data packages: `washr::use_brand()`, or pin a release with
-  `washr::use_brand(ref = "v1.0.0")`.
+  `washr::use_brand(ref = "v1.1.0")`.
 - Quarto projects: `quarto use brand openwashdata/brand` again.
 - quarto-owd regenerates its Word reference document from the refreshed
   brand; see its README.
