@@ -436,4 +436,4 @@ be a separate Typst asset.
 
 Values change in this repository first. Consumers refresh with the same
 commands; releases are tagged, so a consumer can pin a version
-(`washr::use_brand(ref = "v1.0.0")`).
+(`washr::use_brand(ref = "v1.1.0")`).
