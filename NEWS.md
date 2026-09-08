@@ -2,6 +2,20 @@
 
 ## Charts
 
+- The six chart colours alternate in lightness from chart-2 on:
+  chart-3 is a light gold, chart-4 a dark green, chart-5 a light rose
+  and chart-6 a dark blue; chart-1 and chart-2 stay. Adjacent fills now
+  differ in lightness as well as hue, and the smallest distance between
+  any two of the six under deutan or protan simulation more than
+  doubles. Charts built on the earlier chart-3 to chart-6 values change
+  colour when re-rendered (#20).
+- Six counterparts at the other lightness level, chart-1-light,
+  chart-2-light, chart-3-dark, chart-4-light, chart-5-dark and
+  chart-6-light, for seven to twelve series, in that order.
+- The guide states the rule of use (three, six, twelve, then Other or
+  small multiples), shows the twelve on both surfaces with the contrast
+  table, and adds a six-category stacked bar and a waffle as the test
+  case. The diverging ramp ends in chart-6, the dark blue.
 - Six chart colours, chart-1 to chart-6, in both brand files: lightened
   owd-purple, owd-orange, lightened owd-blue, owd-green with more chroma,
   a gold and a rose. Derived from the brand hues and checked for
