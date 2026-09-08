@@ -209,54 +209,77 @@ the six chart colours.
 
 ### Chart colours
 
-Six colours for categorical series, derived from the brand hues and
-checked on both surfaces for lightness, chroma, colour-vision separation
-and contrast. Series take them in this order and never cycle: a seventh
-series folds into "Other", or the chart becomes small multiples. Two
-adjacent pairs (chart-2 next to chart-4, chart-4 next to chart-5) sit in
-the narrow band for colour-vision deficiency, so charts keep a gap
-between fills, direct labels on the values that matter, and a legend.
-Text on charts wears ink or grey, never a series colour.
+Six colours for categorical series, derived from the brand hues. From
+the second colour on, lightness alternates (dark, dark, light, dark,
+light, dark), so every neighbour differs in lightness as well as hue,
+and the red and green hues never share a lightness level, which is what
+keeps them apart under colour-vision deficiency. Series take the colours
+in this order and never cycle. Text on charts wears ink or grey, never a
+series colour.
+
+The rule of use:
+
+- Up to three series: chart-1 to chart-3.
+- Four to six series: all six, in order.
+- Seven to twelve series: continue with the counterparts, each hue at
+  the other lightness level, in the order of the second row below.
+  Beyond six, hue carries most of the distinction, so every series
+  needs a direct label.
+- More than twelve: fold the smallest into "Other", or split the chart
+  into small multiples.
 
 ```{r}
 #| fig-width: 9
-#| fig-height: 3.2
-#| fig-alt: "The six chart colours as tiles, once on the light purple tint and once on the dark purple well."
-chart <- unlist(pal[grepl("^chart_", names(pal))])
+#| fig-height: 5.2
+#| fig-alt: "Twelve chart colours as tiles in two rows, the six series colours and their counterparts, once on the light purple tint and once on the dark purple well."
+main <- unlist(pal[grepl("^chart_[1-6]$", names(pal))])
+alt <- unlist(pal[grepl("^chart_[1-6]_(light|dark)$", names(pal))])
+alt <- alt[order(as.integer(sub("^chart_([1-6]).*$", "\\1", names(alt))))]
+chart <- c(main, alt)
 surfaces <- c(
   "on the light tint (owd-purple-bg)" = hex("owd-purple-bg"),
   "on the dark well (owd-purple-dim)" = hex("owd-purple-dim")
 )
 tiles <- do.call(rbind, lapply(names(surfaces), function(s) {
-  data.frame(surface = s, bg = surfaces[[s]], name = gsub("_", "-", names(chart)),
-             hex = unname(chart), x = seq_along(chart))
+  data.frame(surface = s, bg = surfaces[[s]],
+             name = gsub("_", "-", names(chart)), hex = unname(chart),
+             x = rep(1:6, 2), y = rep(c(2, 1), each = 6),
+             row = rep(c("series 1 to 6", "series 7 to 12"), each = 6))
 }))
 tiles$surface <- factor(tiles$surface, levels = names(surfaces))
+tiles$text <- ifelse(sapply(tiles$hex, lum) > 0.3, hex("ink"), "#ffffff")
 ggplot(tiles) +
-  geom_rect(aes(fill = bg), xmin = 0.3, xmax = 6.7, ymin = 0.3, ymax = 1.7) +
-  geom_tile(aes(x = x, y = 1, fill = hex), width = 0.82, height = 0.82) +
-  geom_text(aes(x = x, y = 1, label = paste0(name, "\n", hex)),
-            size = 3, lineheight = 0.95, color = "#ffffff") +
+  geom_rect(aes(fill = bg), xmin = 0.3, xmax = 6.7, ymin = 0.3, ymax = 2.7) +
+  geom_tile(aes(x = x, y = y, fill = hex), width = 0.82, height = 0.82) +
+  geom_text(aes(x = x, y = y, label = paste0(name, "\n", hex), color = text),
+            size = 3, lineheight = 0.95) +
   scale_fill_identity() +
+  scale_color_identity() +
   facet_wrap(~ surface, ncol = 1) +
   theme_void() +
   theme(strip.text = element_text(hjust = 0, size = 11, margin = margin(b = 4)))
 ```
 
 Fills that reach 3:1 against the surface stand on their own; the others
-need labels or a table next to the chart. The table is computed from the
-file.
+need labels or a table next to the chart. With alternating lightness,
+each colour stands alone on one of the two surfaces. The table is
+computed from the file.
 
 ```{r}
-chart_pairs <- rbind(
-  data.frame(fill = gsub("_", "-", names(chart)), on = "owd-purple-bg"),
-  data.frame(fill = gsub("_", "-", names(chart)), on = "owd-purple-dim")
+relief <- function(r) ifelse(r >= 3, "stands alone", "labels or a table")
+contrast_tbl <- data.frame(
+  colour = gsub("_", "-", names(chart)),
+  hex = unname(chart),
+  tint = sapply(chart, function(h) ratio(h, hex("owd-purple-bg"))),
+  well = sapply(chart, function(h) ratio(h, hex("owd-purple-dim")))
 )
-chart_pairs$ratio <- mapply(function(f, o) ratio(hex(f), hex(o)), chart_pairs$fill, chart_pairs$on)
-chart_pairs$verdict <- ifelse(chart_pairs$ratio >= 3, "stands alone", "labels or a table")
-chart_pairs |>
+contrast_tbl$tint_relief <- relief(contrast_tbl$tint)
+contrast_tbl$well_relief <- relief(contrast_tbl$well)
+contrast_tbl |>
   gt() |>
-  cols_label(fill = "Series colour", on = "Surface", ratio = "Contrast", verdict = "Relief") |>
+  cols_label(colour = "Series colour", hex = "Value",
+             tint = "On the tint", tint_relief = "",
+             well = "On the well", well_relief = "") |>
   tab_options(table.font.size = px(14)) |>
   brand.yml::theme_brand_gt(brand = brand)
 ```
@@ -266,10 +289,60 @@ danger, and neither is a series colour. owd-orange is both the warning
 role and chart-2; the brand names it the chart accent, and the overlap
 is accepted.
 
+### Six series side by side
+
+The test case for the palette: all six colours as touching fills, as a
+stacked bar of shares and as a waffle with one square per percent. If a
+new colour value fails here, it fails everywhere.
+
+::: {layout="[3, 2]"}
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| fig-alt: "Stacked bar chart of six waste categories for three sites in the six chart colours."
+categories <- c("Food", "Garden", "Plastics", "Paper", "Textiles", "Other")
+series <- setNames(unname(main), categories)
+shares <- data.frame(
+  site = rep(c("Site A", "Site B", "Site C"), each = 6),
+  category = factor(rep(categories, 3), levels = rev(categories)),
+  share = c(52, 18, 12, 8, 6, 4,
+            61, 9, 11, 7, 5, 7,
+            44, 22, 10, 12, 8, 4)
+)
+ggplot(shares, aes(x = site, y = share, fill = category)) +
+  geom_col(width = 0.6) +
+  scale_fill_manual(values = series, breaks = categories) +
+  scale_y_continuous(labels = function(x) paste0(x, "%"), expand = expansion(mult = c(0, 0.02))) +
+  labs(x = NULL, y = NULL, fill = NULL, title = "Share of waste by category") +
+  brand.yml::theme_brand_ggplot2(brand = brand)
+```
+
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+#| fig-alt: "Waffle of one hundred squares for one site, one square per percent, in the six chart colours."
+site_a <- subset(shares, site == "Site A")
+squares <- data.frame(category = factor(rep(categories, times = site_a$share), levels = categories))
+squares$i <- seq_len(nrow(squares)) - 1
+squares$x <- squares$i %/% 10
+squares$y <- squares$i %% 10
+ggplot(squares, aes(x = x, y = y, fill = category)) +
+  geom_tile(color = hex("paper"), linewidth = 0.9) +
+  coord_equal() +
+  scale_fill_manual(values = series, breaks = categories, guide = "none") +
+  labs(title = "Site A, one square per percent") +
+  brand.yml::theme_brand_ggplot2(brand = brand) +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(),
+        axis.title = element_blank(), panel.grid = element_blank())
+```
+
+:::
+
 ### Sequential and diverging
 
 A sequential ramp uses one hue, from owd-purple-bg to owd-purple-dark. A
-diverging ramp runs from owd-orange through owd-grey-light to chart-3,
+diverging ramp runs from owd-orange through owd-grey-light to chart-6,
 interpolated in a perceptual colour space: the two poles share the same
 lightness, and lightness rises evenly to the neutral middle on both
 sides (OKLab lightness 0.53, 0.61, 0.69, 0.77 and back). On the dark
@@ -278,12 +351,12 @@ well the middle is owd-grey.
 ```{r}
 #| fig-width: 9
 #| fig-height: 2.2
-#| fig-alt: "Two ramps of seven tiles: the sequential purple ramp and the diverging ramp from orange through grey to blue."
+#| fig-alt: "Two ramps of seven tiles: the sequential purple ramp and the diverging ramp from orange through grey to the dark blue."
 seq_pal <- scales::gradient_n_pal(c(hex("owd-purple-bg"), hex("owd-purple-dark")), space = "Lab")
-div_pal <- scales::gradient_n_pal(c(hex("owd-orange"), hex("owd-grey-light"), hex("chart-3")), space = "Lab")
+div_pal <- scales::gradient_n_pal(c(hex("owd-orange"), hex("owd-grey-light"), hex("chart-6")), space = "Lab")
 ramps <- rbind(
   data.frame(ramp = "sequential: owd-purple-bg to owd-purple-dark", x = 1:7, hex = seq_pal(seq(0, 1, length.out = 7))),
-  data.frame(ramp = "diverging: owd-orange, owd-grey-light, chart-3", x = 1:7, hex = div_pal(seq(0, 1, length.out = 7)))
+  data.frame(ramp = "diverging: owd-orange, owd-grey-light, chart-6", x = 1:7, hex = div_pal(seq(0, 1, length.out = 7)))
 )
 ramps$ramp <- factor(ramps$ramp, levels = unique(ramps$ramp))
 ggplot(ramps, aes(x = x, y = 1, fill = hex)) +
@@ -320,10 +393,10 @@ costs |>
 
 The two calls are `brand.yml::theme_brand_ggplot2()` and
 `brand.yml::theme_brand_gt()`. In R the palette names carry underscores
-(`brand$color$palette$chart_1`). Series take chart-1 to chart-6 in that
-order; a sequential ramp interpolates from owd-purple-bg to
+(`brand$color$palette$chart_1`, `chart_1_light`). Series take chart-1 to
+chart-6 in that order, then the six counterparts; a sequential ramp interpolates from owd-purple-bg to
 owd-purple-dark; a diverging ramp from owd-orange through owd-grey-light
-to chart-3.
+to chart-6.
 
 ## Assets
 
