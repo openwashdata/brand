@@ -1,6 +1,10 @@
 .quarto/
 /.quarto/
-*_files/
+# Quarto's intermediate _files/ next to the source, but NOT the published
+# guide under docs/: its figures live in docs/index_files/ and GitHub
+# Pages serves them.
+/*_files/
+!docs/**/*_files/
 .Rproj.user/
 .Rhistory
 .DS_Store
